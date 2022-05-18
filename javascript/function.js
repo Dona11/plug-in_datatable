@@ -170,6 +170,20 @@ var api = "http://localhost:8080/index.php?page=" + page + "&size=20";
     
   }); */
 
-  $(document).ready(function() {
-    $('#example').DataTable();
-} );
+$(document).ready(function () {
+  $('#example').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: {
+          url: 'http://127.0.0.1:8080/index.php',
+          type: 'POST',
+      },
+      columns: [
+          { data: 'id' },
+          { data: 'birth_date' },
+          { data: 'first_name' },
+          { data: 'last_name' },
+          { data: 'gender' },
+      ],
+  });
+});
